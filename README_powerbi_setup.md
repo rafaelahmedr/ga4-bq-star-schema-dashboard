@@ -27,9 +27,10 @@ Create ONLY these (all Active, Single direction, 1:*):
 - dim_landing_page[landing_page] → fact_sessions_daily[landing_page]
 - dim_landing_page[landing_page] → fact_pageviews_daily[landing_page]
 
-Do NOT create relationships on source alone or medium alone.
-Do NOT use many-to-many.
-Do NOT connect fact-to-fact.
+## Caution
+DO NOT create relationships on source alone or medium alone.  
+DO NOT use many-to-many.  
+DO NOT connect fact-to-fact.
 
 ## Slicers
 Use ONLY dimension fields:
@@ -40,5 +41,4 @@ Use ONLY dimension fields:
 - dim_landing_page[landing_page]
 
 ## Measures
-Create measures from measures.dax (make sure to follow the order)
-Then build visuals using measures, not columns.
+Create measures from measures.dax Please make sure to follow the order. Then build visuals using measures, not columns.
