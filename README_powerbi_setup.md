@@ -40,5 +40,5 @@ Use ONLY dimension fields:
 - dim_landing_page[landing_page]
 
 ## Measures
-Create measures from measures.dax
+Create measures from measures.dax (make sure to follow the order)
 Then build visuals using measures, not columns.
