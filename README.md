@@ -14,17 +14,17 @@ This repo shows the corrected approach:
 ## Architecture
 - `fact_sessions_daily`: sessions + returning sessions at daily grain
 - `fact_pageviews_daily`: page views at daily grain
-- Dimensions: date, channel (source|medium), device, country, landing page
+- Dimensions: date, channel, device, country, landing page
 
 ## How to run
-1. Run SQL scripts in `/sql` in order (01 → 07)
+1. Run SQL scripts in `/sql` in order (first facts, then dimensions)
 2. Run `/sql/99_validation_queries.sql` and confirm totals match
 3. Import tables into Power BI and follow `/powerbi/README_powerbi_setup.md`
 
 ## Key Lessons
 - Sessions and page views are different grains and should not be mixed incorrectly
-- Always aggregate before joining
-- Use a composite key for channel dimensions (source|medium) to avoid many-to-many
+- Always aggregate before joining (MUST)
+- Use a composite key for channel dimensions (source|medium) to avoid many-to-many relationship
 
 ## Screenshots
 See `/docs` for the model diagram and dashboard examples.
