@@ -1,0 +1,27 @@
+Total Sessions =
+SUM ( fact_sessions_daily[sessions] )
+
+Returning Sessions =
+SUM ( fact_sessions_daily[returning_sessions] )
+
+Returning Session % =
+DIVIDE ( [Returning Sessions], [Total Sessions] )
+
+New Sessions =
+[Total Sessions] - [Returning Sessions]
+
+New Session % =
+DIVIDE ( [New Sessions], [Total Sessions] )
+
+Total Page Views =
+SUM ( fact_pageviews_daily[page_views] )
+
+Views per Session =
+DIVIDE ( [Total Page Views], [Total Sessions] )
+
+-- Optional: AI Sessions (only if you kept AI Platforms as a separate group)
+AI Sessions =
+CALCULATE ( [Total Sessions], dim_channel[channel_group] = "AI Platforms" )
+
+AI % of Sessions =
+DIVIDE ( [AI Sessions], [Total Sessions] )
