@@ -17,7 +17,7 @@ SELECT
     WHEN medium IN ('email','hs_email') THEN 'Email'
     WHEN medium = 'referral' THEN 'Referral'
     WHEN source = 'direct' OR medium = '(none)' THEN 'Direct'
-    ELSE 'AI Platforms'
+    ELSE 'Others'
   END AS channel_group
 
 FROM (
