@@ -8,6 +8,13 @@ SELECT
     (SELECT value.string_value
      FROM UNNEST(event_params)
      WHERE key = 'page_location'),
+    r'^https?://([^/]+)'
+  ) AS host,
+
+  REGEXP_EXTRACT(
+    (SELECT value.string_value
+     FROM UNNEST(event_params)
+     WHERE key = 'page_location'),
     r'\.com(/[^?]*)'
   ) AS landing_page,
 
@@ -47,4 +54,12 @@ FROM `ga4-bigquery-export-485911.analytics_388296684.events_*`
 WHERE event_name = 'page_view'
 
 GROUP BY
-  date, landing_page, source, medium, campaign, device_category, country, channel_key;
+  date,
+  host,
+  landing_page,
+  source,
+  medium,
+  campaign,
+  device_category,
+  country,
+  channel_key;
