@@ -10,6 +10,13 @@ WITH base_sessions AS (
       (SELECT value.string_value
        FROM UNNEST(event_params)
        WHERE key = 'page_location'),
+      r'^https?://([^/]+)'
+    ) AS host,
+
+    REGEXP_EXTRACT(
+      (SELECT value.string_value
+       FROM UNNEST(event_params)
+       WHERE key = 'page_location'),
       r'\.com(/[^?]*)'
     ) AS landing_page,
 
@@ -52,6 +59,7 @@ first_seen AS (
 
 SELECT
   s.date,
+  s.host,
   s.landing_page,
   s.source,
   s.medium,
@@ -73,5 +81,12 @@ LEFT JOIN first_seen f
   ON s.user_pseudo_id = f.user_pseudo_id
 
 GROUP BY
-  s.date, s.landing_page, s.source, s.medium, s.campaign,
-  s.device_category, s.country, channel_key;
+  s.date,
+  s.host,
+  s.landing_page,
+  s.source,
+  s.medium,
+  s.campaign,
+  s.device_category,
+  s.country,
+  channel_key;
