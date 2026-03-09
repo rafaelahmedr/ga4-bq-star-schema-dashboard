@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE
+CREATE OR REPLACE VIEW
 `ga4-bigquery-export-485911.analytics_388296684.dim_device` AS
 
 SELECT
