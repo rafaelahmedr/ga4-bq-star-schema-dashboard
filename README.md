@@ -14,7 +14,7 @@ This repo shows the corrected approach:
 ## Architecture
 - `fact_sessions_daily`: sessions + returning sessions at daily grain
 - `fact_pageviews_daily`: page views at daily grain
-- Dimensions: date, channel, device, country, landing page
+- Dimensions: date, channel, device, country, domain, landing page
 
 ## How to run
 1. Run SQL scripts in `/sql` in order (first facts, then dimensions)
