@@ -9,6 +9,7 @@ Load:
 - dim_device
 - dim_country
 - dim_landing_page
+- dim_domain
 
 ## Relationships (Model view)
 Create ONLY these (all Active, Single direction, 1:*):
@@ -27,6 +28,9 @@ Create ONLY these (all Active, Single direction, 1:*):
 - dim_landing_page[landing_page] → fact_sessions_daily[landing_page]
 - dim_landing_page[landing_page] → fact_pageviews_daily[landing_page]
 
+- dim_domain[host] → fact_sessions_daily[host]
+- dim_domain[host] → fact_pageviews_daily[host]
+
 ## Caution
 DO NOT create relationships on source alone or medium alone.  
 DO NOT use many-to-many.  
@@ -39,6 +43,7 @@ Use ONLY dimension fields:
 - dim_device[device_category]
 - dim_country[country]
 - dim_landing_page[landing_page]
+- dim_domain[host]
 
 ## Measures
 Create measures from measures.dax Please make sure to follow the order. Then build visuals using measures, not columns.
